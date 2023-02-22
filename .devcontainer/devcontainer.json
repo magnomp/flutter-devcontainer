@@ -1,0 +1,26 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/lucashilles/flutter-dev-container
+{
+	"name": "Flutter",
+	"dockerFile": "Dockerfile",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash",
+						"icon": "terminal-bash"
+					}
+				},
+				"terminal.integrated.defaultProfile.linux": "bash",		
+			},
+			"extensions": [
+				"dart-code.dart-code",
+				"dart-code.flutter"
+			]
+		}
+	},
+	"runArgs": ["--privileged", "-v", "/dev/bus/usb:/dev/bus/usb"],
+	
+	"remoteUser": "vscode",
+}
