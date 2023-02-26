@@ -1,8 +1,8 @@
-// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
-// https://github.com/lucashilles/flutter-dev-container
 {
 	"name": "Flutter",
-	"dockerFile": "Dockerfile",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "dev",
+	"workspaceFolder": "/workspace",
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -21,7 +21,6 @@
 			]
 		}
 	},
-	"runArgs": ["--privileged", "-v", "/dev/bus/usb:/dev/bus/usb"],
 	
 	"remoteUser": "vscode",
 }

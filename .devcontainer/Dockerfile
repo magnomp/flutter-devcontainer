@@ -4,14 +4,19 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
+RUN apt-get update && \
+    apt install curl wget git xz-utils lib32stdc++6 unzip default-jdk libxdamage-dev libfontconfig libglu1 libnss3-dev libxcomposite1 libxcursor1 libpulse0 libasound2 socat qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils -y
+
 RUN	groupadd --gid $USER_GID $USERNAME && \
     useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME && \
-    usermod -aG plugdev vscode
+    usermod -aG plugdev vscode && \
+    adduser vscode libvirt && \
+    adduser vscode kvm
 
-RUN apt-get update && \
-    apt install curl wget git xz-utils lib32stdc++6 unzip default-jdk -y
+#RUN chown vscode -R /dev/kvm
 
 USER ${USERNAME}
+
 
 WORKDIR /home/vscode
 
